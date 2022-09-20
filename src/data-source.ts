@@ -1,8 +1,8 @@
-import { DataSource } from "typeorm";
 import "reflect-metadata";
+import { DataSource } from "typeorm";
 
 const currentProcess = process.env.NODE_ENV;
-const host = currentProcess === "migration" ? "localhost" : "db_health";
+const host = currentProcess === "migration" ? "localhost" : "m6-s1";
 
 const AppDataSource =
   currentProcess === "test"
