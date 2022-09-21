@@ -22,10 +22,6 @@ export const createContactService = async (
     throw new AppError("Você não possui acesso ao cliente", 403);
   }
 
-  //   const verifyEmailAlreadyExists = await contactRepository.findOne({
-  //     where: [{ client, email }],
-  //   });
-
   const verifyEmailAlreadyExists = await contactRepository
     .createQueryBuilder("contact")
     .where("contact.client.id = :clientId", { clientId })
@@ -36,9 +32,11 @@ export const createContactService = async (
     throw new AppError("E-mail já cadastrado");
   }
 
-  const verifyPhoneAlreadyExists = await contactRepository.findOne({
-    where: [{ client, phone }],
-  });
+  const verifyPhoneAlreadyExists = await contactRepository
+    .createQueryBuilder("contact")
+    .where("contact.client.id = :clientId", { clientId })
+    .andWhere("contact.phone = :phone", { phone })
+    .getOne();
 
   if (verifyPhoneAlreadyExists) {
     throw new AppError("Telefone já cadastrado");

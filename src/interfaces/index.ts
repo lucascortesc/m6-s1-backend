@@ -42,5 +42,5 @@ export interface IContactRequest {
 
 export interface IContactResponse extends IContactRequest {
   id: string;
-  client_id: string;
+  client_id?: string;
 }

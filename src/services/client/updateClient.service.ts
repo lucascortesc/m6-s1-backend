@@ -56,7 +56,7 @@ export const updateClientService = async (
     throw new AppError("Cliente não encontrado");
   }
 
-  const responsePacient = {
+  const responseClient = {
     id: updatedClient.id,
     name: updatedClient.name,
     email: updatedClient.email,
@@ -65,5 +65,5 @@ export const updateClientService = async (
     user_id: updatedClient.user.id,
   };
 
-  return responsePacient;
+  return responseClient;
 };
