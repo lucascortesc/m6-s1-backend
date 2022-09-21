@@ -1,8 +1,8 @@
-import { DataSource } from "typeorm";
+import "dotenv/config";
 import "reflect-metadata";
+import { DataSource } from "typeorm";
 
 const currentProcess = process.env.NODE_ENV;
-const host = currentProcess === "migration" ? "localhost" : "db_health";
 
 const AppDataSource =
   currentProcess === "test"
