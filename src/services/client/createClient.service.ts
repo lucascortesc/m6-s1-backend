@@ -14,7 +14,7 @@ export const createClientService = async (
   const user = await userRepository.findOneBy({ id: user_id });
 
   if (!user) {
-    throw new AppError("Usuário não encontrado");
+    throw new AppError("Usuário não encontrado", 404);
   }
 
   const verifyEmailAlreadyExists = await clientRepository.findOne({
