@@ -28,8 +28,19 @@ export interface IClientResponse extends IClientRequest {
   created_at: Date;
 }
 
-export interface IClientRequestUpdate{
+export interface IClientRequestUpdate {
   name?: string;
   email?: string;
   phone?: string;
+}
+
+export interface IContactRequest {
+  name: string;
+  email: string;
+  phone: string;
+}
+
+export interface IContactResponse extends IContactRequest {
+  id: string;
+  client_id?: string;
 }
