@@ -27,3 +27,9 @@ export interface IClientResponse extends IClientRequest {
   user_id: string;
   created_at: Date;
 }
+
+export interface IClientRequestUpdate{
+  name?: string;
+  email?: string;
+  phone?: string;
+}

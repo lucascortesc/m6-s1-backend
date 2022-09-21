@@ -26,8 +26,28 @@ export const loginSchema = yup.object().shape({
 export const clientSchema = yup
   .object()
   .shape({
-    name: yup.string().required("Nome é obrigatório").max(128, "Permitido no máximo 128 caracteres"),
+    name: yup.string().required("Nome obrigatório").max(128, "Permitido no máximo 128 caracteres"),
     email: yup.string().email("E-mail inválido").required("E-mail obrigatório"),
-    phone: yup.string().matches(/^\([1-9]{2}\)[9]{0,1}[6-9]{1}[0-9]{3}\-[0-9]{4}$/, "Telefone inválido"),
+    phone: yup
+      .string()
+      .matches(
+        /^\([1-9]{2}\)[9]{0,1}[6-9]{1}[0-9]{3}\-[0-9]{4}$/,
+        "Telefone inválido, use o formato (xx)xxxxx-xxxx"
+      )
+      .required("Telefone obrigatório"),
+  })
+  .noUnknown(true);
+
+export const updateClientSchema = yup
+  .object()
+  .shape({
+    name: yup.string().max(128, "Permitido no máximo 128 caracteres"),
+    email: yup.string().email("E-mail inválido"),
+    phone: yup
+      .string()
+      .matches(
+        /^\([1-9]{2}\)[9]{0,1}[6-9]{1}[0-9]{3}\-[0-9]{4}$/,
+        "Telefone inválido, use o formato (xx)xxxxx-xxxx"
+      ),
   })
   .noUnknown(true);

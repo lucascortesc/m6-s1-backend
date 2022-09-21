@@ -17,10 +17,20 @@ export const createClientService = async (
     throw new AppError("Usuário não encontrado");
   }
 
-  const verifyEmailAlreadyExists = await clientRepository.findOneBy({ email });
+  const verifyEmailAlreadyExists = await clientRepository.findOne({
+    where: [{ user, email }],
+  });
 
   if (verifyEmailAlreadyExists) {
     throw new AppError("E-mail já cadastrado");
+  }
+
+  const verifyPhoneAlreadyExists = await clientRepository.findOne({
+    where: [{ user, phone }],
+  });
+
+  if (verifyPhoneAlreadyExists) {
+    throw new AppError("Telefone já cadastrado");
   }
 
   const createdClient = await clientRepository.save({
