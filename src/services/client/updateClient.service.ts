@@ -25,7 +25,7 @@ export const updateClientService = async (
   }
 
   if (client.user.id !== user_id) {
-    throw new AppError("Você não tem acesso ao cliente", 403);
+    throw new AppError("Você não possui acesso ao cliente", 403);
   }
 
   if (data.email) {

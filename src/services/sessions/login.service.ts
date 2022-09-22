@@ -11,13 +11,13 @@ export const loginService = async ({ email, password }: IUserLogin): Promise<str
   const user = await userRepository.findOneBy({ email: email });
 
   if (!user) {
-    throw new AppError("Usuário ou senha inválidos", 403);
+    throw new AppError("E-mail ou senha inválidos", 403);
   }
 
   const passwordMatch = await bcrypt.compare(password, user.password);
 
   if (!passwordMatch) {
-    throw new AppError("Usuário ou senha inválidos", 403);
+    throw new AppError("E-mail ou senha inválidos", 403);
   }
 
   const token = jwt.sign(
