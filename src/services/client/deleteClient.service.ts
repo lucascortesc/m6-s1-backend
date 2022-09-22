@@ -8,11 +8,11 @@ export const deleteClientService = async (clientId: string, userId: string) => {
   const client = await clientRepository.findOneBy({ id: clientId });
 
   if (!client) {
-    throw new AppError("Cliente não encontrado");
+    throw new AppError("Cliente não encontrado", 404);
   }
 
   if (client.user.id !== userId) {
-    throw new AppError("Você não possui acesso ao cliente");
+    throw new AppError("Você não possui acesso ao cliente", 403);
   }
 
   clientRepository.delete(clientId);

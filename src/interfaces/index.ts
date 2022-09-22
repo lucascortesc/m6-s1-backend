@@ -4,6 +4,13 @@ export interface IUserRequest {
   password: string;
 }
 
+export interface IUserTest {
+  name: string;
+  email: string;
+  password: string;
+  token?: string;
+}
+
 export interface IUserResponse {
   id: string;
   name: string;
@@ -32,6 +39,13 @@ export interface IClientRequestUpdate {
   name?: string;
   email?: string;
   phone?: string;
+}
+
+export interface IClientTest {
+  name: string;
+  email: string;
+  phone: string;
+  id?: string;
 }
 
 export interface IContactRequest {
