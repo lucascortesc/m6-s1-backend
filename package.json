@@ -1,0 +1,51 @@
+{
+  "name": "m6-s1-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:lucascortesc/m6-s1-backend.git",
+  "author": "lucascortesc <ccordeiro.lucas@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev src/server.ts",
+    "build": "tsc",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "DockerGenerateMigration": "docker exec api yarn typeorm migration:generate src/migrations/createTables -d src/data-source.ts",
+    "DockerRunMigration": "docker exec api yarn typeorm migration:run -d src/data-source.ts",
+    "GenerateMigration": "yarn typeorm migration:generate src/migrations/createTables -d src/data-source.ts",
+    "RunMigration": "yarn typeorm migration:run -d src/data-source.ts",
+    "test": "cross-env NODE_ENV=test jest",
+    "start": "node build/src/server.js"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/jest": "^29.0.3",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/node": "^18.7.18",
+    "@types/supertest": "^2.0.12",
+    "@types/yup": "^0.32.0",
+    "jest": "^29.0.3",
+    "supertest": "^6.2.4",
+    "ts-jest": "^29.0.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.8.0",
+    "reflect-metadata": "^0.1.13",
+    "sqlite": "^4.1.2",
+    "sqlite3": "^5.1.1",
+    "typeorm": "^0.3.10",
+    "yup": "^0.32.11"
+  }
+}

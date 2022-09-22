@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  api:
+    container_name: api
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      - DB_HOST=db
+      - DB_USER=lucas
+      - DB_PASSWORD=1234
+      - DB=m6-s1
+      - SECRET_KEY=m6-s1
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/app
+
+  db:
+    container_name: db
+    image: postgres:14
+    ports:
+      - 5431:5432
+    environment:
+      - POSTGRES_USER=lucas
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=m6-s1
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lucas -d m6-s1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    volumes:
+      - m6-s1:/var/lib/postgresql/data
+
+volumes:
+  m6-s1:
+    driver: local
