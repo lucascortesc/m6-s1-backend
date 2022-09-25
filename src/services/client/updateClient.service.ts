@@ -34,7 +34,9 @@ export const updateClientService = async (
     });
 
     if (verifyEmailAlreadyExists) {
-      throw new AppError("Email já cadastrado");
+      if (verifyEmailAlreadyExists.id !== client_id) {
+        throw new AppError("E-mail já cadastrado");
+      }
     }
   }
 
@@ -44,7 +46,9 @@ export const updateClientService = async (
     });
 
     if (verifyPhoneAlreadyExists) {
-      throw new AppError("Telefone já cadastrado");
+      if (verifyPhoneAlreadyExists.id !== client_id) {
+        throw new AppError("Telefone já cadastrado");
+      }
     }
   }
 
