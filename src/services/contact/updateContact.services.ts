@@ -31,7 +31,9 @@ export const updateContactService = async (
       .getOne();
 
     if (verifyEmailAlreadyExists) {
-      throw new AppError("E-mail já cadastrado");
+      if (verifyEmailAlreadyExists.id !== contactId) {
+        throw new AppError("E-mail já cadastrado");
+      }
     }
   }
 
@@ -44,7 +46,9 @@ export const updateContactService = async (
       .getOne();
 
     if (verifyPhoneAlreadyExists) {
-      throw new AppError("Telefone já cadastrado");
+      if (verifyPhoneAlreadyExists.id !== contactId) {
+        throw new AppError("Telefone já cadastrado");
+      }
     }
   }
 

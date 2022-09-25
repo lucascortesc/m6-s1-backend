@@ -23,6 +23,10 @@ export interface IUserLogin {
   password: string;
 }
 
+export interface IUserLoginResponse extends IUserResponse{
+  token: string;
+}
+
 export interface IClientRequest {
   name: string;
   email: string;
