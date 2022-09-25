@@ -107,7 +107,7 @@ describe("Testing login", () => {
   test("Sould return an error for a non-existing agent", async () => {
     const response = await request(app).post("/login").send({ email: "agent@mail.com", password: "123" });
 
-    expect(response.status).toEqual(403);
+    expect(response.status).toEqual(404);
     expect(response.body).toHaveProperty("error");
     expect(response.body.error).toEqual("E-mail ou senha inválidos");
   });

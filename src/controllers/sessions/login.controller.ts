@@ -4,7 +4,13 @@ import { loginService } from "../../services/sessions/login.service";
 export const loginController = async (req: Request, res: Response) => {
   const requestData = req.body;
 
-  const token = await loginService(requestData);
+  const login = await loginService(requestData);
 
-  return res.json({ token });
+  const user = {
+    id: login.id,
+    name: login.name,
+    email: login.email,
+  };
+
+  return res.json({ user, token: login.token });
 };
