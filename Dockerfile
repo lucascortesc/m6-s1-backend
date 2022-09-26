@@ -2,14 +2,12 @@ FROM node
 
 WORKDIR /app
 
-COPY "package.json" .
+COPY . .
 
 EXPOSE 8080
 
 ENV PORT 8080
 
 RUN yarn
-
-COPY . .
 
 CMD ["yarn", "dev"]
