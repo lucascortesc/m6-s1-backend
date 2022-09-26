@@ -17,6 +17,7 @@ export class Contact {
 
   @ManyToOne(() => Client, {
     eager: true,
+    onDelete: "CASCADE",
   })
   @JoinColumn({ name: "client_id" })
   client: Client;
