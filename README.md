@@ -1,14 +1,13 @@
-### m6-s1-backend
-
 <div>
-## Para rodar localmente
+ 
+### Para rodar localmente
 
-# Utilizando Docker
+### Utilizando Docker
 * Atualize o docker-compose.yml com seus dados locais, como DB, USER e PASSWORD
 * Rode o comando docker-compose up --build
 * Depois que o build finalizar e com o compose ativado, rode o comando yarn DockerGenerateMigration e em seguida yarn DockerRunMigration para gerar e rodar as migrations
 
-# Sem Docker
+### Sem Docker
 * Crie o .env pegando como exmeplo o .env.example
 * Crie o banco de dados via postgreSQL com o mesmo nome que está no .env 
 * Rode o comando yarn GenerateMigration e em seguida yarn RunMigration para gerar e rodar as migrations
