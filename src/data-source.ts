@@ -17,9 +17,9 @@ const AppDataSource =
         url: process.env.DATABASE_URL,
         ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
         synchronize: false,
-        entities: process.env.NODE_ENV === "production" ? ["build/src/entities/*.js"] : ["src/entities/*.ts"],
+        entities: process.env.NODE_ENV === "production" ? ["dist/src/entities/*.js"] : ["src/entities/*.ts"],
         migrations:
-          process.env.NODE_ENV === "production" ? ["build/src/migrations/*.js"] : ["src/migrations/*.ts"],
+          process.env.NODE_ENV === "production" ? ["dist/src/migrations/*.js"] : ["src/migrations/*.ts"],
         subscribers: [],
       });
 
